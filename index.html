@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>安吉美程度假酒店 · 竹海深处的五星度假</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#1e3a2e; --green2:#2c5240; --ink:#22302a; --cream:#f6f3ec; --cream2:#efe9dd;
+  --gold:#b6924f; --gold2:#d4b77e; --white:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans SC',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.7;overflow-x:hidden}
+h1,h2,h3,.serif{font-family:'Noto Serif SC',serif}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.kicker{letter-spacing:.35em;font-size:12px;color:var(--gold);text-transform:uppercase;font-weight:500}
+.sec-title{font-size:clamp(28px,4vw,44px);font-weight:700;color:var(--green);line-height:1.25;margin:10px 0 14px}
+.sec-sub{color:#5c6f64;max-width:640px;font-size:15px}
+.center{text-align:center}.center .sec-sub{margin:0 auto}
+section{padding:96px 0}
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:18px 0;transition:.35s;color:#fff}
+nav .wrap{display:flex;align-items:center;justify-content:space-between}
+nav .logo{font-family:'Noto Serif SC',serif;font-size:19px;font-weight:700;letter-spacing:.12em}
+nav .links{display:flex;gap:28px;font-size:14px;opacity:.92}
+nav .links a:hover{color:var(--gold2)}
+nav.solid{background:rgba(20,35,28,.92);backdrop-filter:blur(10px);padding:12px 0;box-shadow:0 4px 24px rgba(0,0,0,.18)}
+@media(max-width:860px){nav .links{display:none}}
+/* hero */
+.hero{position:relative;height:100vh;min-height:640px;display:flex;align-items:flex-end;color:#fff}
+.hero .bg{position:absolute;inset:0;background:url('images/005.jpg') center/cover no-repeat;animation:heroZoom 14s ease-out forwards}
+@keyframes heroZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,28,22,.42) 0%,rgba(15,28,22,.08) 40%,rgba(15,28,22,.78) 100%)}
+.hero .wrap{position:relative;z-index:2;padding-bottom:84px;width:100%}
+.hero .tag{display:inline-block;border:1px solid rgba(255,255,255,.5);padding:6px 16px;border-radius:999px;font-size:13px;letter-spacing:.25em;margin-bottom:22px;backdrop-filter:blur(4px)}
+.hero h1{font-size:clamp(38px,6.4vw,76px);font-weight:900;line-height:1.15;text-shadow:0 4px 30px rgba(0,0,0,.35)}
+.hero p{margin-top:18px;font-size:clamp(15px,1.6vw,19px);max-width:620px;color:rgba(255,255,255,.92)}
+.hero .cta{margin-top:34px;display:flex;gap:16px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:999px;font-size:15px;font-weight:500;transition:.3s;cursor:pointer;border:1px solid transparent}
+.btn-gold{background:var(--gold);color:#fff}
+.btn-gold:hover{background:#c9a45f;transform:translateY(-2px)}
+.btn-ghost{border-color:rgba(255,255,255,.6);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.14)}
+.hero .scroll{position:absolute;right:40px;bottom:40px;z-index:2;writing-mode:vertical-rl;font-size:12px;letter-spacing:.4em;color:rgba(255,255,255,.75)}
+/* stats */
+.stats{background:var(--green);color:#fff;padding:56px 0}
+.stats .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.stats .num{font-family:'Noto Serif SC',serif;font-size:clamp(30px,3.4vw,44px);font-weight:700;color:var(--gold2)}
+.stats .lab{font-size:13px;opacity:.8;margin-top:4px;letter-spacing:.1em}
+@media(max-width:860px){.stats .grid{grid-template-columns:repeat(2,1fr);gap:32px}}
+/* selling points */
+.points{background:var(--cream)}
+.points .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:52px}
+.point{background:#fff;border-radius:16px;padding:30px 24px;border:1px solid #e7e0d2;transition:.35s;position:relative;overflow:hidden}
+.point:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(30,58,46,.12);border-color:var(--gold2)}
+.point .no{font-family:'Noto Serif SC',serif;font-size:15px;color:var(--gold);font-weight:700}
+.point h3{font-size:18px;margin:10px 0 8px;color:var(--green)}
+.point p{font-size:13.5px;color:#5c6f64;line-height:1.75}
+@media(max-width:1000px){.points .grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.points .grid{grid-template-columns:1fr}}
+/* feature split */
+.feat{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.feat.rev>.txt{order:2}
+@media(max-width:900px){.feat{grid-template-columns:1fr;gap:32px}.feat.rev>.txt{order:0}}
+.feat .txt ul{list-style:none;margin-top:24px}
+.feat .txt li{padding:12px 0 12px 30px;position:relative;border-bottom:1px dashed #ddd3bd;font-size:14.5px}
+.feat .txt li::before{content:'';position:absolute;left:2px;top:20px;width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(182,146,79,.18)}
+.feat .txt li b{color:var(--green)}
+.imgstack{position:relative}
+.imgstack .main{border-radius:20px;box-shadow:0 30px 60px rgba(30,58,46,.18);aspect-ratio:4/3;object-fit:cover;width:100%}
+.imgstack .float{position:absolute;width:42%;border-radius:14px;border:6px solid var(--cream);box-shadow:0 16px 40px rgba(30,58,46,.22);right:-18px;bottom:-34px;aspect-ratio:1/1;object-fit:cover}
+.badge{position:absolute;left:-16px;top:-16px;background:var(--green);color:#fff;font-size:12.5px;padding:10px 18px;border-radius:999px;letter-spacing:.15em;box-shadow:0 10px 24px rgba(30,58,46,.3)}
+.sec-alt{background:var(--cream2)}
+/* room cards */
+.rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:52px}
+@media(max-width:900px){.rooms{grid-template-columns:1fr}}
+.room{background:#fff;border-radius:18px;overflow:hidden;border:1px solid #e7e0d2;transition:.35s}
+.room:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(30,58,46,.14)}
+.room img{height:230px;width:100%;object-fit:cover}
+.room .bd{padding:22px 24px 26px}
+.room h3{font-size:17px;color:var(--green)}
+.room p{font-size:13px;color:#6a7a70;margin-top:6px}
+.room .tags{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
+.room .tags span{font-size:11.5px;background:var(--cream2);color:var(--green2);padding:3px 10px;border-radius:999px}
+/* room groups */
+.rgroup{margin-top:44px}
+.rhead{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;padding-bottom:14px;border-bottom:2px solid var(--green);margin-bottom:22px}
+.rtag{font-family:'Noto Serif SC',serif;font-weight:700;font-size:17px;padding:6px 18px;border-radius:999px;color:#fff}
+.tag-base{background:#5c7a6a}
+.tag-view{background:var(--gold)}
+.tag-kids{background:#c97f5b}
+.tag-villa{background:var(--green)}
+.rnote{font-size:13px;color:#6a7a70}
+.room h3 em{font-style:normal;font-size:11px;color:#fff;background:var(--gold);padding:2px 8px;border-radius:999px;margin-left:8px;vertical-align:2px}
+.rtips{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rtip{background:#fff;border:1px solid #e7e0d2;border-left:4px solid var(--gold);border-radius:12px;padding:18px 20px;font-size:13.5px}
+.rtip b{display:block;color:var(--green);margin-bottom:6px}
+.rtip span{color:#5c6f64;line-height:1.7}
+@media(max-width:900px){.rtips{grid-template-columns:1fr}}
+/* gallery */
+.gallery{padding:96px 0;background:var(--green);color:#fff}
+.gallery .sec-title{color:#fff}
+.gallery .sec-sub{color:rgba(255,255,255,.72)}
+.gtabs{display:flex;justify-content:center;gap:12px;margin:40px 0 34px;flex-wrap:wrap}
+.gtab{padding:10px 26px;border-radius:999px;border:1px solid rgba(255,255,255,.35);font-size:14px;cursor:pointer;transition:.3s;background:transparent;color:#fff}
+.gtab.active{background:var(--gold);border-color:var(--gold)}
+.masonry{columns:4;column-gap:14px}
+@media(max-width:1100px){.masonry{columns:3}}
+@media(max-width:760px){.masonry{columns:2}}
+.masonry figure{break-inside:avoid;margin:0 0 14px;border-radius:12px;overflow:hidden;position:relative;cursor:zoom-in}
+.masonry img{width:100%;transition:transform .6s}
+.masonry figure:hover img{transform:scale(1.05)}
+.masonry figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 10px;font-size:12px;background:linear-gradient(transparent,rgba(0,0,0,.65));opacity:0;transition:.3s}
+.masonry figure:hover figcaption{opacity:1}
+.src-tag{position:absolute;top:10px;left:10px;font-size:11px;padding:3px 10px;border-radius:999px;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);letter-spacing:.08em}
+/* reviews */
+.reviews .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px}
+@media(max-width:900px){.reviews .grid{grid-template-columns:1fr}}
+.review{background:#fff;border-radius:16px;padding:28px;border:1px solid #e7e0d2;position:relative}
+.review .q{font-family:'Noto Serif SC',serif;font-size:44px;color:var(--gold2);line-height:1;position:absolute;top:14px;left:20px}
+.review p{font-size:14px;color:#4c5c52;padding-top:26px}
+.review .who{margin-top:16px;font-size:12.5px;color:#8a968e;display:flex;align-items:center;gap:8px}
+.review .who i{width:26px;height:1px;background:var(--gold);display:inline-block}
+.stars{color:var(--gold);letter-spacing:2px;font-size:13px}
+/* nearby */
+.near{background:var(--cream2)}
+.near .list{margin-top:48px;display:grid;grid-template-columns:repeat(2,1fr);gap:14px 48px}
+@media(max-width:800px){.near .list{grid-template-columns:1fr}}
+.near .item{display:flex;align-items:center;gap:18px;background:#fff;border-radius:14px;padding:18px 22px;border:1px solid #e7e0d2}
+.near .t{font-family:'Noto Serif SC',serif;font-weight:700;color:var(--gold);font-size:15px;white-space:nowrap;min-width:86px}
+.near .n{font-weight:600;color:var(--green)}
+.near .d{font-size:12.5px;color:#7b8a80}
+/* footer */
+footer{background:#152720;color:rgba(255,255,255,.8);padding:72px 0 40px}
+footer .grid{display:grid;grid-template-columns:1fr;gap:48px}
+@media(max-width:800px){footer .grid{grid-template-columns:1fr}}
+footer h4{color:#fff;font-size:17px;margin-bottom:16px;font-family:'Noto Serif SC',serif}
+footer p,footer li{font-size:13.5px;line-height:2;list-style:none}
+footer .bottom{margin-top:48px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);font-size:12px;color:rgba(255,255,255,.45);text-align:center}
+footer .big{font-family:'Noto Serif SC',serif;font-size:24px;color:#fff;margin-bottom:12px}
+/* lightbox */
+.lb{position:fixed;inset:0;background:rgba(10,18,14,.92);z-index:100;display:none;align-items:center;justify-content:center;padding:4vw}
+.lb.open{display:flex}
+.lb img{max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.lb .close{position:absolute;top:24px;right:32px;color:#fff;font-size:34px;cursor:pointer;opacity:.8}
+.reveal{opacity:0;transform:translateY(36px);transition:all .9s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <div class="logo">美程度假酒店 · MYCHANT RESORT</div>
+    <div class="links">
+      <a href="#points">酒店亮点</a><a href="#rooms">居停客房</a><a href="#dining">筳宴1994</a>
+      <a href="#gallery">相册精选</a><a href="#reviews">住客评价</a><a href="#nearby">周边玩乐</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="bg"></div>
+  <div class="wrap">
+    <span class="tag">安吉 · 灵峰旅游度假区腹地</span>
+    <h1>竹海深处的「小而美」<br>五星度假酒店</h1>
+    <p>99间客房 + 5栋私汤别墅的黄金体量，把城市五星的硬件配置搬进竹海——Simmons床垫、Dyson吹风机、LV旗下茶灵洗护，外加30年餐饮品牌「美程·筳宴1994」。</p>
+    <div class="cta">
+      <a class="btn btn-gold" href="#gallery">浏览精选相册</a>
+      <a class="btn btn-ghost" href="#rooms">查看房型亮点</a>
+    </div>
+  </div>
+  <div class="scroll">SCROLL</div>
+</header>
+
+<div class="stats">
+  <div class="wrap grid">
+    <div><div class="num">99<span style="font-size:.5em"> 间</span></div><div class="lab">精品客房</div></div>
+    <div><div class="num">5<span style="font-size:.5em"> 栋</span></div><div class="lab">双卧私汤别墅</div></div>
+    <div><div class="num">30<span style="font-size:.5em"> 年</span></div><div class="lab">独立餐饮品牌</div></div>
+    <div><div class="num">2024</div><div class="lab">全新开业</div></div>
+  </div>
+</div>
+
+<section class="points" id="points">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="kicker">WHY MYCHANT</div>
+      <h2 class="sec-title">八个让客户无法拒绝的理由</h2>
+      <p class="sec-sub">每一条卖点，都有真实住客评价做背书。</p>
+    </div>
+    <div class="grid">
+      <div class="point reveal"><div class="no">01</div><h3>五星硬件堆料</h3><p>Simmons床垫 + Dyson吹风机 + LV旗下CHA LING茶灵洗护 + HIFI音响 + 胶囊咖啡机，把城市五星标准搬进竹海，同价位度假酒店中的超配。</p></div>
+      <div class="point reveal"><div class="no">02</div><h3>30年餐饮品牌</h3><p>「美程·筳宴1994」不是酒店附属餐厅，而是有独立品牌积淀的餐饮。住客正餐满200减40，吃是招牌不是配套。</p></div>
+      <div class="point reveal"><div class="no">03</div><h3>亲子放电设计</h3><p>滑梯亲子房（云朵/太空主题+室内滑梯+海洋球）、免费儿童乐园、儿童全套洗护——孩子玩到电量耗尽，家长终于能躺平。</p></div>
+      <div class="point reveal"><div class="no">04</div><h3>黄金小体量</h3><p>99间客房+5栋别墅，人少、安静、服务密度高。泳池不用抢、服务叫得应，不会出现"下饺子"式度假。</p></div>
+      <div class="point reveal"><div class="no">05</div><h3>竹海自然环境</h3><p>灵峰度假区腹地，被竹林茶园环绕。山景房落地窗直对竹海，早上被鸟鸣叫醒，晚上躺着数星星。</p></div>
+      <div class="point reveal"><div class="no">06</div><h3>私汤别墅</h3><p>5栋双卧私汤别墅，私人庭院+独立泡池+全景落地窗。适合4人家庭或两对情侣拼住，人均成本大幅降低。</p></div>
+      <div class="point reveal"><div class="no">07</div><h3>景点零距离</h3><p>步行5-10分钟到竹博园，15分钟到浙江自然博物馆，距熊猫乐园1.3公里，江南天池/余村驾车15分钟。</p></div>
+      <div class="point reveal"><div class="no">08</div><h3>新酒店品质</h3><p>2024年开业，通过最新建筑/消防/卫生规范，智能客控系统实现无感化体验，干净到可以光脚走。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="rooms">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="kicker">ROOMS</div>
+      <h2 class="sec-title">15 种房型，配置各有侧重</h2>
+      <p class="sec-sub">全系标配 Simmons 甜梦之床与胶囊咖啡机；戴森吹风机、茶灵洗护、私汤泡池等只在指定房型配置——选房看这里，不踩坑。</p>
+    </div>
+
+    <div class="rgroup reveal">
+      <div class="rhead"><span class="rtag tag-base">高性价比 · 基础房型</span><span class="rnote">Simmons甜梦之床 + 胶囊咖啡机 + 智能客控</span></div>
+      <div class="rooms">
+        <div class="room"><img src="images/rooms/r07.jpg" alt="高级大床房"><div class="bd"><h3>高级大床房</h3><p>1张2米特大床 · 25-30㎡ · 2人 · 2-5层</p><div class="tags"><span>Simmons甜梦之床</span><span>私享coffee机</span><span>智能客控</span></div></div></div>
+        <div class="room"><img src="images/rooms/r15.jpg" alt="特惠大床房"><div class="bd"><h3>特惠大床房</h3><p>1张2米特大床 · 2人入住</p><div class="tags"><span>Simmons甜梦之床</span><span>私享coffee机</span><span>智能客控</span></div></div></div>
+        <div class="room"><img src="images/rooms/r11.jpg" alt="特惠双床房"><div class="bd"><h3>特惠双床房</h3><p>2张单人床 · 2人入住</p><div class="tags"><span>Simmons甜梦之床</span><span>私享coffee机</span><span>智能客控</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="rgroup reveal">
+      <div class="rhead"><span class="rtag tag-view">景观阳台 · 甜梦之床系列</span><span class="rnote">庭院景 / 山景 / 落日景观 · 均带观景阳台或露台</span></div>
+      <div class="rooms">
+        <div class="room"><img src="images/rooms/r01.jpg" alt="园景阳台大床房"><div class="bd"><h3>园景阳台大床房</h3><p>1张2米特大床 · 30-35㎡ · 2人 · 2-6层 · 庭院景+露台</p><div class="tags"><span>甜梦之床</span><span>观景阳台</span><span>智能客控</span></div></div></div>
+        <div class="room"><img src="images/rooms/r02.jpg" alt="园景阳台双床房"><div class="bd"><h3>园景阳台双床房</h3><p>2张1.25米单人床 · 30-35㎡ · 2人 · 2-6层 · 庭院景+露台</p><div class="tags"><span>甜梦之床</span><span>观景阳台</span><span>智能客控</span></div></div></div>
+        <div class="room"><img src="images/rooms/r05.jpg" alt="山景阳台大床房"><div class="bd"><h3>山景阳台大床房 <em>本店销量No.1</em></h3><p>1张2米特大床 · 35-40㎡ · 2人 · 2-6层 · 直面竹海</p><div class="tags"><span>甜梦之床</span><span>山景阳台</span><span>落地窗</span></div></div></div>
+        <div class="room"><img src="images/rooms/r08.jpg" alt="山景阳台双床家庭房"><div class="bd"><h3>山景阳台双床家庭房</h3><p>双床+沙发床 · 2-6层 · 家庭入住 · 直面竹海</p><div class="tags"><span>甜梦之床</span><span>山景阳台</span><span>沙发床</span></div></div></div>
+        <div class="room"><img src="images/rooms/r14.jpg" alt="山景阳台好莱坞大床房"><div class="bd"><h3>山景阳台好莱坞大床房</h3><p>1张2.4米特大床 · 40㎡ · 2人 · 2-6层 · 露台</p><div class="tags"><span>甜梦之床</span><span>2.4米大床</span><span>山景露台</span></div></div></div>
+        <div class="room"><img src="images/rooms/r00.jpg" alt="落日景观大床房"><div class="bd"><h3>落日景观大床房</h3><p>1张2米特大床 · 35-40㎡ · 2人 · 3-5层 · 西向落日露台</p><div class="tags"><span>甜梦之床</span><span>落日景观</span><span>智能客控</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="rgroup reveal">
+      <div class="rhead"><span class="rtag tag-kids">亲子主题 · 房间里就有滑梯</span><span class="rnote">亲子房均配 戴森吹风机 · 主题房含超大泡池或滑梯</span></div>
+      <div class="rooms">
+        <div class="room"><img src="images/rooms/r03.jpg" alt="太空主题亲子房"><div class="bd"><h3>太空主题亲子房</h3><p>2米特大床+1.25米单人床 · 110-120㎡ · 3人 · 5层 · 挑高Loft</p><div class="tags"><span>戴森吹风机</span><span>超大泡池</span><span>室内滑梯</span><span>海洋球池</span></div></div></div>
+        <div class="room"><img src="images/rooms/r06.jpg" alt="云朵主题亲子房"><div class="bd"><h3>云朵主题亲子房</h3><p>2米特大床+1.25米单人床 · 110-120㎡ · 3人 · 5层 · 部分山景</p><div class="tags"><span>戴森吹风机</span><span>超大泡池</span><span>室内滑梯</span><span>海洋球池</span></div></div></div>
+        <div class="room"><img src="images/rooms/r12.jpg" alt="海豹主题儿童房"><div class="bd"><h3>海豹主题儿童房</h3><p>2米特大床+2张1.2米上下铺 · 60㎡ · 3层 · 可住4人</p><div class="tags"><span>上下铺</span><span>海洋主题</span><span>观景窗</span></div></div></div>
+        <div class="room"><img src="images/rooms/r13.jpg" alt="松鼠主题儿童房"><div class="bd"><h3>松鼠主题儿童房</h3><p>2米特大床+2张1.2米上下铺 · 60㎡ · 3层 · 可住4人</p><div class="tags"><span>上下铺</span><span>森林树屋</span><span>浴缸</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="rgroup reveal">
+      <div class="rhead"><span class="rtag tag-villa">套房与私汤别墅 · 顶配</span><span class="rnote">戴森吹风机 + 茶灵洗护 / 日内瓦音响 · 别墅均带私汤泡池</span></div>
+      <div class="rooms">
+        <div class="room"><img src="images/rooms/r04.jpg" alt="豪华至尊套房"><div class="bd"><h3>豪华至尊套房</h3><p>1张2米特大床 · 60-65㎡ · 3人 · 2层 · 山景+露台</p><div class="tags"><span>戴森吹风机</span><span>LV茶灵洗护</span><span>HIFI音响</span></div></div></div>
+        <div class="room"><img src="images/rooms/r09.jpg" alt="庭院双卧中套别墅"><div class="bd"><h3>庭院双卧中套别墅</h3><p>2张2米特大床 · 2室2厅3卫 · 4人 · 私家庭院</p><div class="tags"><span>戴森吹风机</span><span>私汤泡池</span><span>日内瓦音响</span></div></div></div>
+        <div class="room"><img src="images/rooms/r10.jpg" alt="庭院双卧边套别墅"><div class="bd"><h3>庭院双卧边套别墅</h3><p>2张2米特大床 · 150㎡ · 2室2厅3卫 · 4人 · 1-3层 · 边套更安静</p><div class="tags"><span>戴森吹风机</span><span>私汤泡池</span><span>日内瓦音响</span><span>露台</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="rtips reveal">
+      <div class="rtip"><b>选房提示 ①</b><span>园景房朝北，想要更好视野优先选「山景阳台房」或「落日景观房」。</span></div>
+      <div class="rtip"><b>选房提示 ②</b><span>戴森吹风机和 LV 茶灵洗护只在亲子主题房、豪华至尊套房和别墅配置，基础房型没有。</span></div>
+      <div class="rtip"><b>选房提示 ③</b><span>私汤泡池仅 5 栋双卧别墅专属，想泡汤直接订别墅，别指望公共泡池。</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-alt" id="kids">
+  <div class="wrap">
+    <div class="feat rev">
+      <div class="txt reveal">
+        <div class="kicker">FAMILY</div>
+        <h2 class="sec-title">房间里有滑梯<br>孩子玩到不肯走</h2>
+        <p class="sec-sub">云朵/太空/松鼠主题亲子房，室内滑梯+海洋球+帐篷；免费儿童乐园配齐滑梯、绘本角、沙坑，儿童全套洗护酒店都备好了。</p>
+        <ul>
+          <li><b>主题亲子房</b>　云朵/太空/松鼠/海豹，挑高户型带室内滑梯</li>
+          <li><b>免费儿童乐园</b>　很多酒店单次收费50-100元，美程免费且配置完整</li>
+          <li><b>儿童全套洗护 + 床围栏 + 儿童洗漱包</b>　细节控家长狂喜</li>
+          <li><b>免费洗衣房</b>　长住/带娃家庭的刚需级便利</li>
+        </ul>
+      </div>
+      <div class="imgstack reveal">
+        <img class="main" src="images/040.jpg" alt="云朵主题亲子房">
+        <img class="float" src="images/353.jpg" alt="儿童乐园海洋球池">
+        <span class="badge">官方 × 住客实拍</span>
+      </div>
+    </div>
+    <div class="rooms">
+      <div class="room reveal"><img src="images/042.jpg" alt="太空主题亲子房"><div class="bd"><h3>太空主题亲子房</h3><p>戴森吹风机+超大泡池+亲子滑滑梯，110-120㎡挑高空间。</p><div class="tags"><span>室内滑梯</span><span>超大泡池</span><span>110㎡+</span></div></div></div>
+      <div class="room reveal"><img src="images/137.jpg" alt="松鼠主题儿童房"><div class="bd"><h3>松鼠主题儿童房</h3><p>森林树屋造型+滑梯+海洋球，孩子进门就尖叫。</p><div class="tags"><span>树屋滑梯</span><span>海洋球</span><span>帐篷</span></div></div></div>
+      <div class="room reveal"><img src="images/065.jpg" alt="室内儿童乐园"><div class="bd"><h3>免费室内儿童乐园</h3><p>竹笋城堡滑梯+绘本角+小车赛道，雨天也能放电一整天。</p><div class="tags"><span>免费</span><span>全天候</span><span>专人看护区</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="dining">
+  <div class="wrap">
+    <div class="feat">
+      <div class="txt reveal">
+        <div class="kicker">DINING</div>
+        <h2 class="sec-title">美程·筳宴1994<br>30年餐饮老牌子做的酒店</h2>
+        <p class="sec-sub">不是酒店附属餐厅，而是在当地小有名气的独立餐饮品牌：8个包厢、1个自助餐厅、300㎡多功能厅，私宴/宴会/婚宴都接得住。</p>
+        <ul>
+          <li><b>小馄饨现包现下</b>　现做档口，远超"预制加热"式自助早餐</li>
+          <li><b>住客正餐满200减40</b>　对住客有实打实的优惠</li>
+          <li><b>安吉特色菜</b>　笋干烧肉、油焖笋、乌米饭，住客评价"太下饭""回味无穷"</li>
+          <li><b>早餐07:00-10:00</b>　中西自助，1.4米以下儿童免费</li>
+        </ul>
+      </div>
+      <div class="imgstack reveal">
+        <img class="main" src="images/291.jpg" alt="筳宴1994家宴">
+        <img class="float" src="images/055.jpg" alt="招牌菜品">
+        <span class="badge">住客实拍 · 家宴</span>
+      </div>
+    </div>
+    <div class="rooms">
+      <div class="room reveal"><img src="images/010.jpg" alt="自助餐厅"><div class="bd"><h3>自助餐厅</h3><p>中西式自助早餐，现煮米粉、面条、小馄饨档口。</p><div class="tags"><span>现做档口</span><span>儿童免费</span></div></div></div>
+      <div class="room reveal"><img src="images/288.jpg" alt="笋干烧肉"><div class="bd"><h3>笋干烧肉</h3><p>安吉笋干吸饱肉汁，住客原话："太下饭，连吃两顿"。</p><div class="tags"><span>安吉特色</span><span>住客实拍</span></div></div></div>
+      <div class="room reveal"><img src="images/274.jpg" alt="早餐档口"><div class="bd"><h3>早餐现做档口</h3><p>小馄饨现包现下，还能亲手做乌米饭团，好吃又好玩。</p><div class="tags"><span>现包小馄饨</span><span>乌米饭团DIY</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-alt" id="facilities">
+  <div class="wrap">
+    <div class="feat rev">
+      <div class="txt reveal">
+        <div class="kicker">FACILITIES</div>
+        <h2 class="sec-title">泳池、SPA、健身房<br>公区齐全但服务不打折</h2>
+        <p class="sec-sub">室外景观泳池被竹林环抱，另有水疗SPA、棋牌室、大堂吧与书吧。99间房的体量，让泳池不用抢、服务叫得应。</p>
+        <ul>
+          <li><b>室外景观泳池</b>　夏天开放，配有专门安全员，家长安心</li>
+          <li><b>健身房 / 水疗SPA / 棋牌室</b>　大人的躺平天堂</li>
+          <li><b>大堂吧 + 书吧</b>　喝茶品白茶，晚上微醺一杯</li>
+          <li><b>1500㎡宴会空间</b>　会议厅+多功能厅，团建不用分住两家酒店</li>
+        </ul>
+      </div>
+      <div class="imgstack reveal">
+        <img class="main" src="images/001.jpg" alt="室外景观泳池">
+        <img class="float" src="images/326.jpg" alt="住客实拍圆形泳池">
+        <span class="badge">官方 × 住客实拍</span>
+      </div>
+    </div>
+    <div class="rooms">
+      <div class="room reveal"><img src="images/003.jpg" alt="景观泡池"><div class="bd"><h3>景观泡池</h3><p>夜幕下的圆形泡池，灯光+雾气+竹海，出片率100%。</p><div class="tags"><span>夜景</span><span>泡池</span></div></div></div>
+      <div class="room reveal"><img src="images/060.jpg" alt="健身房"><div class="bd"><h3>健身房</h3><p>跑步机、椭圆机、力量器械一应俱全，落地窗外就是庭院。</p><div class="tags"><span>24小时</span><span>景观窗</span></div></div></div>
+      <div class="room reveal"><img src="images/014.jpg" alt="大堂书吧"><div class="bd"><h3>大堂吧与书吧</h3><p>挑高木构空间，白天喝茶看书，晚上小酌微醺。</p><div class="tags"><span>书吧</span><span>大堂吧</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="kicker">GALLERY</div>
+      <h2 class="sec-title">携程相册精选</h2>
+      <p class="sec-sub">「官方相册」看品质把控，「住客相册」看真实体验——两组都来自携程酒店相册页。</p>
+    </div>
+    <div class="gtabs">
+      <button class="gtab active" data-g="official">官方相册精选</button>
+      <button class="gtab" data-g="daren">住客实拍精选</button>
+    </div>
+    <div class="masonry" id="g-official"></div>
+    <div class="masonry" id="g-daren" style="display:none"></div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="kicker">REVIEWS</div>
+      <h2 class="sec-title">住客怎么说</h2>
+      <p class="sec-sub">摘自携程真实住客点评。</p>
+    </div>
+    <div class="grid">
+      <div class="review reveal"><span class="q">“</span><p>环境优美竹林环绕，服务周到。酒店距离HelloKitty乐园、竹博园和浙江自然博物馆分别15分钟、4分钟和20分钟，自驾非常方便。上午游玩下午回酒店孩子还能游泳或在室内波波池玩耍，大人小孩都非常满意。</p><div class="who"><i></i>广州亲子家庭 · 携程住客<span class="stars">★★★★★</span></div></div>
+      <div class="review reveal"><span class="q">“</span><p>位置非常安静，服务人员有求必应，响应速度非常快。早餐小馄饨是现包现下的。酒店的美程美宴餐厅正餐相比土菜馆更精致，住店客人还可享受满200减40。</p><div class="who"><i></i>家庭旅游 · 携程住客<span class="stars">★★★★★</span></div></div>
+      <div class="review reveal"><span class="q">“</span><p>酒店环境优美，安静闲适，宝宝特别喜欢酒店的大泳池，连续两天去游泳，而且泳池有专门的安全员，很安心。早餐也挺丰盛，晚餐味道很好，酒店还有儿童乐园。</p><div class="who"><i></i>亲子出行 · 携程住客<span class="stars">★★★★★</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="near" id="nearby">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="kicker">LOCATION</div>
+      <h2 class="sec-title">景点零距离，度假不用天天开车</h2>
+      <p class="sec-sub">位于安吉灵峰旅游度假区腹地——比"景区门口"的酒店更安静，又比"山里"的酒店更方便，闹中取静的黄金区位。</p>
+    </div>
+    <div class="list">
+      <div class="item reveal"><div class="t">步行 5-10 分钟</div><div><div class="n">安吉竹博园</div><div class="d">中国竹子博览园，看大熊猫、赏百竹</div></div></div>
+      <div class="item reveal"><div class="t">约 15 分钟</div><div><div class="n">浙江自然博物馆（安吉馆）</div><div class="d">亚洲单体建筑最大的自然博物馆</div></div></div>
+      <div class="item reveal"><div class="t">1.3 公里</div><div><div class="n">熊猫乐园 / 精灵之丘水豚乐园</div><div class="d">遛娃放电的热门目的地</div></div></div>
+      <div class="item reveal"><div class="t">驾车 15 分钟</div><div><div class="n">江南天池 · 余村</div><div class="d">冬季滑雪、夏日避暑、打卡"两山"理念发源地</div></div></div>
+      <div class="item reveal"><div class="t">驾车约 20 分钟</div><div><div class="n">Hello Kitty 乐园</div><div class="d">亲子家庭必打卡主题乐园</div></div></div>
+      <div class="item reveal"><div class="t">自驾友好</div><div><div class="n">停车场充足 · 导航精准</div><div class="d">地上+地下停车场，可直接开到酒店门前放行李</div></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <div class="big">安吉美程度假酒店</div>
+        <p>MYCHANT RESORT ANJI<br>浙江省湖州市安吉县 美程路1号（灵峰旅游度假区腹地）<br>2024年开业 · 99间客房 · 5栋私汤别墅</p>
+      </div>
+    </div>
+    <div class="bottom">本页面为酒店展示用途 · 图片版权归酒店及携程平台所有 · 住客评价摘自携程公开点评</div>
+  </div>
+</footer>
+
+<div class="lb" id="lb"><span class="close" onclick="lb.classList.remove('open')">×</span><img id="lbImg" src=""></div>
+
+<script>
+const G = {
+  official: [
+    ['005','航拍全景 · 竹海环抱'],['002','酒店外观 · 水景庭院'],['000','夜景航拍'],['003','景观泡池夜景'],
+    ['006','水景庭院'],['019','水景中庭'],['024','别墅庭院'],['001','室外景观泳池'],
+    ['026','景观大床房'],['036','山景落地窗客房'],['043','山景客房'],['053','阳台山景'],
+    ['045','景观浴缸房'],['106','别墅卧室'],['109','别墅露台'],['040','云朵主题亲子房'],
+    ['042','太空主题亲子房'],['137','松鼠主题儿童房'],['065','室内儿童乐园'],['010','自助餐厅'],
+    ['055','招牌菜品'],['059','本帮菜品'],['060','健身房'],['014','大堂书吧'],
+    ['112','Dyson 吹风机'],['121','茶灵洗护']
+  ],
+  daren: [
+    ['189','白色礼堂 · 竹林环绕'],['175','筳宴1994 · 暮色夜景'],['183','建筑夜景 · 华灯初上'],['191','庭院夜色 · 金光树影'],
+    ['218','园景双床房 · 推窗见绿'],['229','景观套房 · 明亮通透'],['247','大堂吧 · 挑高木构'],['236','大堂书吧 · 临窗而坐'],
+    ['321','泳池与别墅群'],['326','圆形泳池 · 晴空碧水'],['332','泳池俯瞰'],
+    ['339','儿童乐园 · 竹笋城堡'],['336','太空主题亲子房 · 气球滑梯'],['352','海洋球池 · 亲子同乐'],['214','亲子主题房 · 滑梯海洋球'],
+    ['295','筳宴家宴 · 满桌佳肴'],['280','下午茶点'],['357','健身房 · 落地庭院景'],
+    ['371','山湖远眺'],['373','山顶草坪 · 云海群山'],['378','竹海茶山'],
+    ['407','园景别墅 · 俯瞰泳池'],['410','庭院暮色'],['411','阳台远眺 · 远山如黛']
+  ]
+};
+const lb = document.getElementById('lb'), lbImg = document.getElementById('lbImg');
+function render(key, tag){
+  const el = document.getElementById('g-'+key);
+  el.innerHTML = G[key].map(([id,cap])=>`
+    <figure onclick="openLb('images/${id}.jpg')">
+      <img loading="lazy" src="images/${id}.jpg" alt="${cap}">
+      <span class="src-tag">${tag}</span>
+      <figcaption>${cap}</figcaption>
+    </figure>`).join('');
+}
+render('official','官方相册'); render('daren','住客相册');
+function openLb(src){ lbImg.src = src; lb.classList.add('open'); }
+lb.addEventListener('click', e=>{ if(e.target===lb) lb.classList.remove('open'); });
+document.querySelectorAll('.gtab').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.gtab').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  const g = b.dataset.g;
+  document.getElementById('g-official').style.display = g==='official'?'':'none';
+  document.getElementById('g-daren').style.display = g==='daren'?'':'none';
+}));
+// nav & reveal
+const nav = document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('solid', scrollY>60));
+const io = new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

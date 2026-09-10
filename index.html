@@ -109,15 +109,21 @@ nav.solid{background:rgba(20,35,28,.92);backdrop-filter:blur(10px);padding:12px 
 .gtabs{display:flex;justify-content:center;gap:12px;margin:40px 0 34px;flex-wrap:wrap}
 .gtab{padding:10px 26px;border-radius:999px;border:1px solid rgba(255,255,255,.35);font-size:14px;cursor:pointer;transition:.3s;background:transparent;color:#fff}
 .gtab.active{background:var(--gold);border-color:var(--gold)}
-.masonry{columns:4;column-gap:14px}
-@media(max-width:1100px){.masonry{columns:3}}
-@media(max-width:760px){.masonry{columns:2}}
-.masonry figure{break-inside:avoid;margin:0 0 14px;border-radius:12px;overflow:hidden;position:relative;cursor:zoom-in}
-.masonry img{width:100%;transition:transform .6s}
-.masonry figure:hover img{transform:scale(1.05)}
-.masonry figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 10px;font-size:12px;background:linear-gradient(transparent,rgba(0,0,0,.65));opacity:0;transition:.3s}
-.masonry figure:hover figcaption{opacity:1}
-.src-tag{position:absolute;top:10px;left:10px;font-size:11px;padding:3px 10px;border-radius:999px;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);letter-spacing:.08em}
+/* 翻页画廊 */
+.flip{max-width:880px;margin:0 auto}
+.flip .stage{position:relative;border-radius:18px;overflow:hidden;background:#0e1f17;aspect-ratio:16/10;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+.flip .stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s ease;transform:scale(1.02)}
+.flip .stage img.cur{opacity:1;transform:scale(1)}
+.flip .cap{position:absolute;left:0;right:0;bottom:0;padding:44px 20px 14px;font-size:14px;letter-spacing:.04em;background:linear-gradient(transparent,rgba(0,0,0,.7));display:flex;justify-content:space-between;align-items:flex-end;pointer-events:none}
+.flip .cap .n{font-size:12.5px;color:rgba(255,255,255,.75)}
+.src-tag{position:absolute;top:14px;left:14px;font-size:11.5px;padding:4px 14px;border-radius:999px;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);letter-spacing:.08em;z-index:2}
+.flip .arrow{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.45);background:rgba(10,20,15,.45);backdrop-filter:blur(6px);color:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.25s;z-index:3;user-select:none}
+.flip .arrow:hover{background:var(--gold);border-color:var(--gold)}
+.flip .prev{left:14px}.flip .next{right:14px}
+.flip .dots{display:flex;justify-content:center;gap:9px;margin-top:20px;flex-wrap:wrap}
+.flip .dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.28);cursor:pointer;transition:.25s}
+.flip .dot.cur{background:var(--gold);transform:scale(1.35)}
+.flip .thumbs{display:none}
 /* reviews */
 .reviews .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px}
 @media(max-width:900px){.reviews .grid{grid-template-columns:1fr}}
@@ -358,8 +364,17 @@ footer .big{font-family:'Noto Serif SC',serif;font-size:24px;color:#fff;margin-b
       <button class="gtab active" data-g="official">官方相册精选</button>
       <button class="gtab" data-g="daren">住客实拍精选</button>
     </div>
-    <div class="masonry" id="g-official"></div>
-    <div class="masonry" id="g-daren" style="display:none"></div>
+    <div class="flip">
+      <div class="stage" id="flipStage">
+        <span class="src-tag" id="flipTag">官方相册</span>
+        <img id="flipImgA" alt="">
+        <img id="flipImgB" alt="">
+        <div class="cap"><span id="flipCap"></span><span class="n" id="flipNo"></span></div>
+        <div class="arrow prev" id="flipPrev">‹</div>
+        <div class="arrow next" id="flipNext">›</div>
+      </div>
+      <div class="dots" id="flipDots"></div>
+    </div>
   </div>
 </section>
 
@@ -413,44 +428,71 @@ footer .big{font-family:'Noto Serif SC',serif;font-size:24px;color:#fff;margin-b
 <script>
 const G = {
   official: [
-    ['005','航拍全景 · 竹海环抱'],['002','酒店外观 · 水景庭院'],['000','夜景航拍'],['003','景观泡池夜景'],
-    ['006','水景庭院'],['019','水景中庭'],['024','别墅庭院'],['001','室外景观泳池'],
-    ['026','景观大床房'],['036','山景落地窗客房'],['043','山景客房'],['053','阳台山景'],
-    ['045','景观浴缸房'],['106','别墅卧室'],['109','别墅露台'],['040','云朵主题亲子房'],
-    ['042','太空主题亲子房'],['137','松鼠主题儿童房'],['065','室内儿童乐园'],['010','自助餐厅'],
-    ['055','招牌菜品'],['059','本帮菜品'],['060','健身房'],['014','大堂书吧'],
-    ['112','Dyson 吹风机'],['121','茶灵洗护']
+    ['005','航拍全景 · 竹海环抱'],['002','酒店外观 · 水景庭院'],['001','室外景观泳池'],
+    ['036','山景落地窗客房'],['106','别墅卧室'],['040','云朵主题亲子房'],
+    ['065','室内儿童乐园'],['010','自助餐厅'],['055','招牌菜品']
   ],
   daren: [
-    ['189','白色礼堂 · 竹林环绕'],['175','筳宴1994 · 暮色夜景'],['183','建筑夜景 · 华灯初上'],['191','庭院夜色 · 金光树影'],
-    ['218','园景双床房 · 推窗见绿'],['229','景观套房 · 明亮通透'],['247','大堂吧 · 挑高木构'],['236','大堂书吧 · 临窗而坐'],
-    ['321','泳池与别墅群'],['326','圆形泳池 · 晴空碧水'],['332','泳池俯瞰'],
-    ['339','儿童乐园 · 竹笋城堡'],['336','太空主题亲子房 · 气球滑梯'],['352','海洋球池 · 亲子同乐'],['214','亲子主题房 · 滑梯海洋球'],
-    ['295','筳宴家宴 · 满桌佳肴'],['280','下午茶点'],['357','健身房 · 落地庭院景'],
-    ['371','山湖远眺'],['373','山顶草坪 · 云海群山'],['378','竹海茶山'],
-    ['407','园景别墅 · 俯瞰泳池'],['410','庭院暮色'],['411','阳台远眺 · 远山如黛']
+    ['189','白色礼堂 · 竹林环绕'],['175','筳宴1994 · 暮色夜景'],['183','建筑夜景 · 华灯初上'],
+    ['218','园景双床房 · 推窗见绿'],['326','圆形泳池 · 晴空碧水'],['336','太空主题亲子房 · 气球滑梯'],
+    ['295','筳宴家宴 · 满桌佳肴'],['373','山顶草坪 · 云海群山'],['407','园景别墅 · 俯瞰泳池']
   ]
 };
 const lb = document.getElementById('lb'), lbImg = document.getElementById('lbImg');
-function render(key, tag){
-  const el = document.getElementById('g-'+key);
-  el.innerHTML = G[key].map(([id,cap])=>`
-    <figure onclick="openLb('images/${id}.jpg')">
-      <img loading="lazy" src="images/${id}.jpg" alt="${cap}">
-      <span class="src-tag">${tag}</span>
-      <figcaption>${cap}</figcaption>
-    </figure>`).join('');
+// —— 翻页画廊 ——
+let curAlbum = 'official', curIdx = 0, showingA = true;
+const imgA = document.getElementById('flipImgA'), imgB = document.getElementById('flipImgB'),
+      capEl = document.getElementById('flipCap'), noEl = document.getElementById('flipNo'),
+      tagEl = document.getElementById('flipTag'), dotsEl = document.getElementById('flipDots');
+function buildDots(){
+  dotsEl.innerHTML = G[curAlbum].map((_,i)=>`<span class="dot${i===curIdx?' cur':''}" data-i="${i}"></span>`).join('');
+  dotsEl.querySelectorAll('.dot').forEach(d=>d.addEventListener('click',()=>go(+d.dataset.i)));
 }
-render('official','官方相册'); render('daren','住客相册');
+function go(i, instant){
+  const arr = G[curAlbum];
+  curIdx = (i+arr.length)%arr.length;
+  const [id, cap] = arr[curIdx];
+  const src = 'images/'+id+'.jpg';
+  const showEl = showingA ? imgB : imgA, hideEl = showingA ? imgA : imgB;
+  showEl.src = src; showEl.alt = cap;
+  showEl.onload = ()=>{ showEl.classList.add('cur'); hideEl.classList.remove('cur'); };
+  if(instant){ showEl.classList.add('cur'); hideEl.classList.remove('cur'); }
+  showingA = !showingA;
+  capEl.textContent = cap;
+  noEl.textContent = (curIdx+1)+' / '+arr.length;
+  tagEl.textContent = curAlbum==='official' ? '官方相册' : '住客相册';
+  dotsEl.querySelectorAll('.dot').forEach((d,di)=>d.classList.toggle('cur', di===curIdx));
+}
+document.getElementById('flipPrev').addEventListener('click',()=>go(curIdx-1));
+document.getElementById('flipNext').addEventListener('click',()=>go(curIdx+1));
+// 左右滑动切换（移动端）
+const stage = document.getElementById('flipStage');
+let tx = 0;
+stage.addEventListener('touchstart',e=>{ tx = e.touches[0].clientX; },{passive:true});
+stage.addEventListener('touchend',e=>{
+  const dx = e.changedTouches[0].clientX - tx;
+  if(Math.abs(dx)>40) go(dx<0 ? curIdx+1 : curIdx-1);
+},{passive:true});
+// 键盘切换
+addEventListener('keydown',e=>{
+  if(e.key==='ArrowLeft') go(curIdx-1);
+  if(e.key==='ArrowRight') go(curIdx+1);
+});
+// 点击大图放大
+stage.addEventListener('click',e=>{
+  if(e.target.closest('.arrow')||e.target.closest('.dot')) return;
+  const [id] = G[curAlbum][curIdx];
+  openLb('images/'+id+'.jpg');
+});
 function openLb(src){ lbImg.src = src; lb.classList.add('open'); }
 lb.addEventListener('click', e=>{ if(e.target===lb) lb.classList.remove('open'); });
 document.querySelectorAll('.gtab').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.gtab').forEach(x=>x.classList.remove('active'));
   b.classList.add('active');
-  const g = b.dataset.g;
-  document.getElementById('g-official').style.display = g==='official'?'':'none';
-  document.getElementById('g-daren').style.display = g==='daren'?'':'none';
+  curAlbum = b.dataset.g; curIdx = 0;
+  buildDots(); go(0, true);
 }));
+buildDots(); go(0, true);
 // nav & reveal
 const nav = document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('solid', scrollY>60));
